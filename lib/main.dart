@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -54,9 +55,16 @@ class Home extends StatelessWidget {
                   final AccessToken accessToken = result.accessToken!;
                   print('userId: ${accessToken.userId}');
                   print('token: ${accessToken.token}');
+
+                  // sign into Firebase Auth
+                  final res = await FirebaseAuth.instance.signInWithCredential(FacebookAuthProvider.credential(accessToken.token));
+                  print(res);
                 }
                 if (result.status == LoginStatus.cancelled) {
                   print('Login cancelled');
+                }
+                if (result.status == LoginStatus.failed) {
+                  print('💥 Login failed!');
                 }
               } catch (err) {
                 print(err.toString());
@@ -76,4 +84,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
