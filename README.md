@@ -1,16 +1,39 @@
 # facebook_login_app
 
-A new Flutter application.
+Facebook login Flutter iOS
 
-## Getting Started
+Facebook Developers
+Create new app in https://developers.facebook.com/
 
-This project is a starting point for a Flutter application.
+Create New App => select ‘Business’, click Continue
+App Display Name (can contain fb or facebook etc)
 
-A few resources to get you started if this is your first Flutter project:
+Settings => Basic to get App ID & App Secret
+Settings => Advanced to get Client Token
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Create project with Swift support (final page when creating new project in Android studio)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Flutter Installation
+iOS Installation flutter_facebook_auth
+https://facebook.meedu.app/#/ios
+
+**Important!!!!!
+Put CFBundleURLTypes configuration at END of <dict> in Info.plist
+
+Make sure to prefix app-id with fb in CFBundleURLSchemas (see below) but NOT in FacebookAppID key.
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>fb{your-app-id}</string> // <= IMPORTANT
+    </array>
+  </dict>
+</array>
+
+Get user information
+https://facebook.meedu.app/#/user-information
+
+Complete example
+https://facebook.meedu.app/#/example
+

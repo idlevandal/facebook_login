@@ -52,7 +52,8 @@ class Home extends StatelessWidget {
                 if (result.status == LoginStatus.success) {
                   // you are logged
                   final AccessToken accessToken = result.accessToken!;
-                  print(accessToken);
+                  print('userId: ${accessToken.userId}');
+                  print('token: ${accessToken.token}');
                 }
                 if (result.status == LoginStatus.cancelled) {
                   print('Login cancelled');
@@ -66,6 +67,7 @@ class Home extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               await FacebookAuth.instance.logOut();
+              print('you are now logged out!');
             },
             child: Text('Logout'),
           )
